@@ -11,42 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :exercise %>
-    <%= form.text_field :exercise %>
+  <div class="input-group mb-3">
+    <%= form.label :exercise, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.text_field :exercise, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :sets %>
-    <%= form.number_field :sets %>
+  <div class="input-group mb-3">
+    <%= form.label :sets, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.number_field :sets, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :reps %>
-    <%= form.number_field :reps %>
+  <div class="input-group mb-3">
+    <%= form.label :reps, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.number_field :reps, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :cadence %>
-    <%= form.text_field :cadence %>
+  <div class="input-group mb-3">
+    <%= form.label :cadence, class: "input-group-text", style: "width: 100px;"%>
+    <%= form.text_field :cadence, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :load %>
-    <%= form.number_field :load %>
+  <div class="input-group mb-3">
+    <%= form.label :load, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.number_field :load, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :rest %>
-    <%= form.number_field :rest %>
+  <div class="input-group mb-3">
+    <%= form.label :rest, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.number_field :rest, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_field :notes %>
+  <div class="input-group mb-3">
+    <%= form.label :notes, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.text_field :notes, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success", style: "width: 110px;" %>
   </div>
 <% end %>
