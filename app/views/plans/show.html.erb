@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @plan.exercise %>
+</p>
+
+<p>
+  <strong>Sets:</strong>
+  <%= @plan.sets %>
+</p>
+
+<p>
+  <strong>Reps:</strong>
+  <%= @plan.reps %>
+</p>
+
+<p>
+  <strong>Cadence:</strong>
+  <%= @plan.cadence %>
+</p>
+
+<p>
+  <strong>Load:</strong>
+  <%= @plan.load %>
+</p>
+
+<p>
+  <strong>Rest:</strong>
+  <%= @plan.rest %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @plan.notes %>
+</p>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>
