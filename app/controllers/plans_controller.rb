@@ -64,6 +64,6 @@ class PlansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plan_params
-      params.require(:plan).permit(:exercise, :sets, :reps, :cadence, :load, :rest, :notes)
+      params.require(:plan).permit(:exercise, :sets, :reps, :cadence, :load, :rest, :notes, :muscle_group_id)
     end
 end

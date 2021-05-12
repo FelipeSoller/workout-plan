@@ -1,6 +1,7 @@
 <table class="mt-5 table table-secondary table-bordered table-striped">
   <thead class="table-dark">
     <tr class="text-center">
+      <th>Muscle Group</th>
       <th>Exercise</th>
       <th>Sets</th>
       <th>Reps</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @plans.each do |plan| %>
       <tr class="align-middle text-center">
+        <td><%= plan.muscle_group.title %></td>
         <td><%= plan.exercise %></td>
         <td><%= plan.sets %></td>
         <td><%= plan.reps %></td>
