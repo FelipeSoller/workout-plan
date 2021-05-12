@@ -9,6 +9,14 @@
 
         <% if user_signed_in? %>
           <li class="nav-item">
+            <%= link_to "Add Muscle Group", new_muscle_group_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Muscle Groups", muscle_groups_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
             <%= link_to "Add Plan", new_plan_path, class: "nav-link" %>
           </li>
 

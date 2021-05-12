@@ -1,0 +1,9 @@
+<div class="input-group mb-3">
+  <strong class="input-group-text", style="width: 100px;">Title:</strong>
+  <div class="form-control bg-white">
+    <%= @muscle_group.title %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_muscle_group_path(@muscle_group), class: "btn btn-success me-2", style: "width: 110px;"%>
+<%= link_to 'Back', muscle_groups_path, class: "btn btn-primary", style: "width: 110px;"%>

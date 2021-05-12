@@ -1,0 +1,23 @@
+<%= form_with(model: muscle_group) do |form| %>
+  <% if muscle_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(muscle_group.errors.count, "error") %> prohibited this muscle_group from being saved:</h2>
+
+      <ul>
+        <% muscle_group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group mb-3">
+    <%= form.label :title, class: "input-group-text", style: "width: 100px;" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit class: "btn btn-success" %>
+  </div>
+
+<% end %>
