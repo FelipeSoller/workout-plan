@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="input-group mb-3">
+    <%= form.label :client, class: "input-group-text", style: "width: 120px;" %>
+    <%= form.select :client_id, Client.all.collect { |u| [u.name, u.id] }, {}, class: "form-control", style: "background: white;" %>
+  </div>
+
+  <div class="input-group mb-3">
     <%= form.label :muscle_group, class: "input-group-text", style: "width: 120px;" %>
     <%= form.select :muscle_group_id, MuscleGroup.all.collect { |u| [u.title, u.id] }, {}, class: "form-control", style: "background: white;" %>
   </div>

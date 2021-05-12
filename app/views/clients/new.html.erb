@@ -1,0 +1,8 @@
+<div class="card my-4 bg-secondary bg-gradient text-center">
+  <div class="card-body">
+    <h2 class="text-light fw-bold">Add New Client</h2>
+  </div>
+</div>
+
+<%= render 'form', client: @client %>
+<%= link_to 'Back', clients_path, class: "btn btn-primary mt-2", style: "width: 120px;"%>

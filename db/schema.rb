@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_174612) do
+ActiveRecord::Schema.define(version: 2021_05_12_200142) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "purpose"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "muscle_groups", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "client_id"
+    t.index ["client_id"], name: "index_muscle_groups_on_client_id"
   end
 
   create_table "plans", force: :cascade do |t|

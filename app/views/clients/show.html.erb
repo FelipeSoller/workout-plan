@@ -1,0 +1,21 @@
+<div class="input-group mb-3">
+  <strong class="input-group-text", style="width: 100px;">Name:</strong>
+  <div class="form-control bg-white">
+    <%= @client.name %>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <strong class="input-group-text", style="width: 100px;">Age:</strong>
+  <div class="form-control bg-white">
+    <%= @client.age %>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <strong class="input-group-text", style="width: 100px;">Purpose:</strong>
+  <div class="form-control bg-white">
+    <%= @client.purpose %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_client_path(@client), class: "btn btn-success me-2", style: "width: 110px;"%>
+<%= link_to 'Back', clients_path, class: "btn btn-primary", style: "width: 110px;"%>
