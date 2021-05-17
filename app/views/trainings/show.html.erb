@@ -1,0 +1,24 @@
+<div class="card text-dark bg-light mb-3 mx-auto" style="max-width: 40rem;">
+  <h1 class="card-header">Trainings</h1>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col">Name</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="align-middle"><%= @training.name %></td>
+
+          <td class="d-flex justify-content-end">
+            <%= link_to 'Edit', edit_training_path(@training), class: "btn btn-primary btn-sm" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to 'Back', trainings_path, class: "btn btn-secondary" %>
+  </div>
+</div>

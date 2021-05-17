@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :clients
   root 'home#index'
+
   devise_for :users
-  resources :muscle_groups
-  resources :plans
-#   get 'home/index'
+
+  resources :students
+  resources :teachers
+  resources :trainings
+  resources :exercises
 end

@@ -7,52 +7,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown me-2">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Clients
-            </a>
-            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item bg-dark">
-                <%= link_to "Add Client", new_client_path, class: "nav-link" %>
-              </li>
-
-              <li class="dropdown-item bg-dark">
-                <%= link_to "Clients List", clients_path, class: "nav-link" %>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown me-2">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Muscle Group
-            </a>
-            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item bg-dark">
-                <%= link_to "Add Muscle Group", new_muscle_group_path, class: "nav-link" %>
-              </li>
-
-              <li class="dropdown-item bg-dark">
-                <%= link_to "Muscle Groups List", muscle_groups_path, class: "nav-link" %>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown me-5">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Plans
-            </a>
-            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item bg-dark">
-                <%= link_to "Add Plan", new_plan_path, class: "nav-link" %>
-              </li>
-
-              <li class="dropdown-item bg-dark">
-                <%= link_to "Plans List", plans_path, class: "nav-link" %>
-              </li>
-            </ul>
-          </li>
-
           <li class="nav-item">
             <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
           </li>
@@ -61,17 +15,21 @@
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
 
-        <% else %>
-
           <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "New Student", new_student_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Sing In", new_user_session_path, class: "nav-link" %>
+            <%= link_to "New Teacher", new_teacher_path, class: "nav-link" %>
           </li>
-        <% end %>
 
+          <li class="nav-item">
+            <%= link_to "New Training", new_training_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "New Exercise", new_exercise_path, class: "nav-link" %>
+          </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
