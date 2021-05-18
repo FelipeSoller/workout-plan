@@ -2,6 +2,6 @@ class Teacher < ApplicationRecord
   has_one :user
   has_many :students
 
-  validates :name, :email, presence: true
-  validates :email, uniqueness: { case_sensitive: false }
+  validates :name, presence: true
+  validates :name, length: { minimum: 2, maximum: 20 }
 end

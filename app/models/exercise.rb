@@ -2,5 +2,6 @@ class Exercise < ApplicationRecord
   belongs_to :trainings
 
   validates :name, :sets, :reps, :rest, :muscle_group, presence: true
-  validates :name, uniqueness: { case_sensitive: false }
+  validates :sets, :reps, :rest, numericality: { only_integer: true, greater_than: 0 }
+  validates :name, uniqueness: { case_sensitive: false }, length: { minimum: 2, maximum: 20 }
 end
