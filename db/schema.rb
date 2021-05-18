@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_05_17_215929) do
 
   create_table "exercises", force: :cascade do |t|
+    t.integer "training_id"
     t.string "name"
     t.integer "sets"
     t.integer "reps"
@@ -20,12 +21,15 @@ ActiveRecord::Schema.define(version: 2021_05_17_215929) do
     t.string "muscle_group"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["training_id"], name: "index_exercises_on_training_id"
   end
 
   create_table "students", force: :cascade do |t|
+    t.integer "teacher_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_students_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -35,9 +39,11 @@ ActiveRecord::Schema.define(version: 2021_05_17_215929) do
   end
 
   create_table "trainings", force: :cascade do |t|
+    t.integer "student_id"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_trainings_on_student_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,6 +63,9 @@ ActiveRecord::Schema.define(version: 2021_05_17_215929) do
     t.index ["teacher_id"], name: "index_users_on_teacher_id"
   end
 
+  add_foreign_key "exercises", "trainings"
+  add_foreign_key "students", "teachers"
+  add_foreign_key "trainings", "students"
   add_foreign_key "users", "students"
   add_foreign_key "users", "teachers"
 end

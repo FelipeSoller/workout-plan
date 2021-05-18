@@ -13,6 +13,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/new
   def new
     @exercise = Exercise.new
+    @exercise.build_training
   end
 
   # GET /exercises/1/edit
@@ -22,6 +23,8 @@ class ExercisesController < ApplicationController
   # POST /exercises or /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
+    # CORRIGIR ESTA INFORMACAO
+    @exercise.training = Training.find_by(title: "Treino 1")
 
     respond_to do |format|
       if @exercise.save
@@ -64,6 +67,6 @@ class ExercisesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def exercise_params
-      params.require(:exercise).permit(:name, :sets, :reps, :rest, :muscle_group)
+      params.require(:exercise).permit(:name, :sets, :reps, :rest, :muscle_group, training_attributes: [:title])
     end
 end

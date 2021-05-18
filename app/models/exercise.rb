@@ -1,5 +1,8 @@
 class Exercise < ApplicationRecord
-  belongs_to :trainings
+  belongs_to :training
+
+  accepts_nested_attributes_for :training
+
 
   validates :name, :sets, :reps, :rest, :muscle_group, presence: true
   validates :sets, :reps, :rest, numericality: { only_integer: true, greater_than: 0 }

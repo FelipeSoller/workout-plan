@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
   validate :ensure_that_no_student_and_teacher_at_the_same_time
 
+  def password
+    @password ||= '123456'
+    @password_confirmation ||= '123456'
+  end
+
   def teacher?
     profile == 'teacher'
   end

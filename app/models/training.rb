@@ -3,6 +3,8 @@ class Training < ApplicationRecord
 
   has_many :exercises
 
+  accepts_nested_attributes_for :student
+
   validates :title, presence: true
   validates :title, uniqueness: { case_sensitive: false }, length: { minimum: 2, maximum: 20 }
 end

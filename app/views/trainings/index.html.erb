@@ -11,7 +11,7 @@
       <tbody>
         <% @trainings.each do |training| %>
           <tr>
-            <td class="align-middle fw-bold"><%= link_to training.name, training, style: "text-decoration: none !important;" %></td>
+            <td class="align-middle fw-bold"><%= link_to training.title, training, style: "text-decoration: none !important;" %></td>
             <td class="d-flex justify-content-end">
               <%= link_to 'Edit', edit_training_path(training), class: "btn btn-primary btn-sm" %>
               <%= link_to 'Destroy', training, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ms-3" %>

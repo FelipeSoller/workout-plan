@@ -13,6 +13,7 @@ class TrainingsController < ApplicationController
   # GET /trainings/new
   def new
     @training = Training.new
+    @training.build_student
   end
 
   # GET /trainings/1/edit
@@ -22,6 +23,8 @@ class TrainingsController < ApplicationController
   # POST /trainings or /trainings.json
   def create
     @training = Training.new(training_params)
+    # CORRIGIR ESTA INFORMACAO
+    @training.student = Student.find_by(name: "Student 1")
 
     respond_to do |format|
       if @training.save
@@ -64,6 +67,6 @@ class TrainingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training_params
-      params.require(:training).permit(:title)
+      params.require(:training).permit(:title, student_attributes: [:name])
     end
 end
