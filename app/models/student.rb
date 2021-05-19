@@ -6,6 +6,7 @@ class Student < ApplicationRecord
   has_many :trainings
 
   accepts_nested_attributes_for :user
+  # accepts_nested_attributes_for :teacher
 
   validates :name, presence: true
   validates :name, length: { minimum: 2, maximum: 20 }
