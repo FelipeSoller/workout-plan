@@ -23,7 +23,9 @@ class StudentsController < ApplicationController
   # POST /students or /students.json
   def create
     @student = Student.new(student_params)
+    # CORRIGIR ESTA INFORMACAO - recuperar professor pelo usuário corrente no cadastro de professores
     @student.teacher = Teacher.find_by(name: "Teacher 3")
+
 
     respond_to do |format|
       if @student.save
