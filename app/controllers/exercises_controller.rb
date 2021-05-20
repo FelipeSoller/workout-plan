@@ -24,8 +24,8 @@ class ExercisesController < ApplicationController
   # POST /exercises or /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
-    # CORRIGIR ESTA INFORMACAO
-    @exercise.training = Training.find_by(title: "Treino 1")
+    # VERIFICAR SE ESTA CORRETO
+    @exercise.training = Training.find_by(params[:title])
 
     respond_to do |format|
       if @exercise.save

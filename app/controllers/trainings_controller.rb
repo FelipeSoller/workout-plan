@@ -24,8 +24,8 @@ class TrainingsController < ApplicationController
   # POST /trainings or /trainings.json
   def create
     @training = Training.new(training_params)
-    # CORRIGIR ESTA INFORMACAO
-    @training.student = Student.find_by(name: "Student 1")
+    # VERIFICAR SE ESTA CORRETO
+    @training.student = Student.find_by(params[:name])
 
     respond_to do |format|
       if @training.save
