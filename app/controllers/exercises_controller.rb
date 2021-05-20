@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /exercises or /exercises.json
   def index
