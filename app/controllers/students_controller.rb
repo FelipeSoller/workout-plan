@@ -24,8 +24,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     # CORRIGIR ESTA INFORMACAO - recuperar professor pelo usuário corrente no cadastro de professores
-    @student.teacher = Teacher.find_by(name: "Teacher 3")
-
+    @student.teacher = current_user.teacher
 
     respond_to do |format|
       if @student.save
@@ -68,6 +67,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:name, teacher_attributes: [:email, :profile, :student_id, :id])
+      params.require(:student).permit(:name, user_attributes: [:email, :profile, :student_id, :id])
     end
 end
