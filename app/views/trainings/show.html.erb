@@ -4,21 +4,19 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="col">Name</th>
+          <th class="col"><%= @training.title %></th>
           <th colspan="2"></th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td class="align-middle"><%= @training.title %></td>
-
-          <td class="d-flex justify-content-end">
-            <%= link_to 'Edit', edit_training_path(@training), class: "btn btn-primary btn-sm" %>
-          </td>
+          <td class="align-middle">Exercícios</td>
         </tr>
       </tbody>
     </table>
-    <%= link_to 'Back', trainings_path, class: "btn btn-secondary" %>
+    <%= link_to 'Back', student_path(@training.student_id), class: "btn btn-secondary btn" %>
+  <%= link_to 'New Exercise', new_exercise_path, class: "btn btn-success" %>
+
   </div>
 </div>

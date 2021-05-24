@@ -1,5 +1,6 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: %i[ show edit update destroy ]
+  before_action :set_student, only: %i[ show new edit create update destroy ]
   before_action :authenticate_user!
 
   # GET /trainings or /trainings.json
@@ -24,12 +25,13 @@ class TrainingsController < ApplicationController
   # POST /trainings or /trainings.json
   def create
     @training = Training.new(training_params)
-    # VERIFICAR SE ESTA CORRETO
-    @training.student = Student.find_by(params[:name])
+
+    # @training.student_id = @student.id
+    @training.student_id = params[:student_id]
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to @training, notice: "Training was successfully created." }
+        format.html { redirect_to student_url(@training.student_id), notice: "Training was successfully created." }
         format.json { render :show, status: :created, location: @training }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +44,7 @@ class TrainingsController < ApplicationController
   def update
     respond_to do |format|
       if @training.update(training_params)
-        format.html { redirect_to @training, notice: "Training was successfully updated." }
+        format.html { redirect_to student_url(@training.student_id), notice: "Training was successfully updated." }
         format.json { render :show, status: :ok, location: @training }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +57,7 @@ class TrainingsController < ApplicationController
   def destroy
     @training.destroy
     respond_to do |format|
-      format.html { redirect_to trainings_url, notice: "Training was successfully destroyed." }
+      format.html { redirect_to student_url(@training.student_id), notice: "Training was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -64,6 +66,10 @@ class TrainingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_training
       @training = Training.find(params[:id])
+    end
+
+    def set_student
+      @student = Student.find(params[:student_id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -22,3 +22,29 @@
     <%= link_to 'Back', students_path, class: "btn btn-secondary" %>
   </div>
 </div>
+
+<div class="card text-dark bg-light mb-3 mx-auto" style="max-width: 40rem;">
+  <h1 class="card-header">Trainings</h1>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col">Title</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @trainings.each do |training| %>
+          <tr>
+            <td class="align-middle fw-bold"><%= link_to training.title, student_training_path(@student.id, training.id), style: "text-decoration: none !important;" %></td>
+            <td class="d-flex justify-content-end">
+              <%= link_to 'Edit', edit_student_training_path(training.student_id, training.id), class: "btn btn-primary btn btn-sm ms-3" %>
+              <%= link_to 'Destroy', student_training_path(training.student_id, training.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ms-3" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'New Training', new_student_training_path(student_id: @student.id), class: "btn btn-success" %>
+  </div>
+</div>

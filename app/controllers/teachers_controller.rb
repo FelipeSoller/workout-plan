@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:new]
+  before_action :authenticate_user!, except: [ :new, :create]
 
   # GET /teachers or /teachers.json
   def index
@@ -66,6 +66,6 @@ class TeachersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def teacher_params
-      params.require(:teacher).permit(:name, user_attributes: [:email, :profile, :teacher_id, :id])
+      params.require(:teacher).permit(:name, user_attributes: [:email, :password, :password_confirmation, :profile, :teacher_id, :id])
     end
 end

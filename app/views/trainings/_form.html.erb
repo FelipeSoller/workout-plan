@@ -1,4 +1,5 @@
-<%= form_with(model: training) do |form| %>
+<%#= form_with(model: training) do |form| %>
+<%= form_for [@student, @training] do |form| %>
   <% if training.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>

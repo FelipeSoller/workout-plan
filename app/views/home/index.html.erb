@@ -1,12 +1,18 @@
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-4">
-      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary mt-2", style: "width: 200px" %>
+  <% if user_signed_in? %>
+    <h1>Bem Vindo</h1>
+  <% else %>
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <%= link_to "Sign Up", new_teacher_path, class: "btn btn-primary mt-2", style: "width: 200px" %>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-4">
-      <%= link_to "Sing In", new_user_session_path, class: "btn btn-success mt-2", style: "width: 200px" %>
+
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <%= link_to "Sing In", new_user_session_path, class: "btn btn-success mt-2", style: "width: 200px" %>
+      </div>
     </div>
-  </div>
+  <% end %>
+
 </div>

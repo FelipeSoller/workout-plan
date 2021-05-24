@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :students
   resources :teachers
-  resources :trainings
+
   resources :exercises
+
+  resources :students do
+    resources :trainings
+  end
+
 end
