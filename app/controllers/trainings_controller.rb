@@ -16,6 +16,7 @@ class TrainingsController < ApplicationController
   def new
     @training = Training.new
     @training.build_student
+    @training.exercises.build
   end
 
   # GET /trainings/1/edit
@@ -26,7 +27,6 @@ class TrainingsController < ApplicationController
   def create
     @training = Training.new(training_params)
 
-    # @training.student_id = @student.id
     @training.student_id = params[:student_id]
 
     respond_to do |format|
@@ -74,6 +74,8 @@ class TrainingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training_params
-      params.require(:training).permit(:title, student_attributes: [:name])
+      params.require(:training).permit(:title, student_attributes: [:name], exercises_attributes: [:name, :sets, :reps, :rest, :muscle_group, :training_id, :_destroy])
     end
 end
+
+

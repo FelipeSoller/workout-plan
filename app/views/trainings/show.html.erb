@@ -1,22 +1,34 @@
 <div class="card text-dark bg-light mb-3 mx-auto" style="max-width: 40rem;">
-  <h1 class="card-header">Trainings</h1>
+  <h1 class="card-header"><%= @training.title %></h1>
   <div class="card-body">
     <table class="table">
       <thead>
         <tr>
-          <th class="col"><%= @training.title %></th>
-          <th colspan="2"></th>
+          <th class="col">Nome</th>
+          <th class="col">Sets</th>
+          <th class="col">Reps</th>
+          <th class="col">Rest</th>
+          <th class="col">Muscle group</th>
+          <th colspan="3"></th>
         </tr>
       </thead>
-
       <tbody>
-        <tr>
-          <td class="align-middle">Exercícios</td>
-        </tr>
+        <% @training.exercises.each do |exercise| %>
+          <tr>
+            <td class="align-middle"><%= exercise.name %></td>
+            <td class="align-middle"><%= exercise.sets %></td>
+            <td class="align-middle"><%= exercise.reps %></td>
+            <td class="align-middle"><%= exercise.rest %></td>
+            <td class="align-middle"><%= exercise.muscle_group %></td>
+            <td class="d-flex justify-content-end">
+              <%= link_to 'Edit', edit_exercise_path(exercise), class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ms-3" %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <%= link_to 'Back', student_path(@training.student_id), class: "btn btn-secondary btn" %>
-  <%= link_to 'New Exercise', new_exercise_path, class: "btn btn-success" %>
-
+    <%= link_to 'New Exercise', new_exercise_path(@training.student_id), class: "btn btn-success" %>
   </div>
 </div>

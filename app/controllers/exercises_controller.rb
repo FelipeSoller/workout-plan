@@ -25,7 +25,8 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     # VERIFICAR SE ESTA CORRETO
-    @exercise.training = Training.find_by(params[:title])
+    # @exercise.training = Training.find_by(params[:title])
+    @exercise.training_id = params[:training_id]
 
     respond_to do |format|
       if @exercise.save
@@ -55,7 +56,7 @@ class ExercisesController < ApplicationController
   def destroy
     @exercise.destroy
     respond_to do |format|
-      format.html { redirect_to exercises_url, notice: "Exercise was successfully destroyed." }
+      format.html { redirect_to @exercise, notice: "Exercise was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -68,6 +69,6 @@ class ExercisesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def exercise_params
-      params.require(:exercise).permit(:name, :sets, :reps, :rest, :muscle_group, training_attributes: [:title])
+      params.require(:exercise).permit(:name, :sets, :reps, :rest, :muscle_group, training_attributes: [:title, :training_id, :id])
     end
 end

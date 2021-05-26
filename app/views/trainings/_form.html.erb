@@ -1,5 +1,5 @@
 <%#= form_with(model: training) do |form| %>
-<%= form_for [@student, @training] do |form| %>
+<%= form_for [@student, @training] do |f| %>
   <% if training.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
@@ -14,12 +14,16 @@
 
   <div class="row row-cols-lg g-3">
     <div class="input-group">
-      <%= form.label :title, class: "input-group-text" %>
-      <%= form.text_field :title, class: "form-control" %>
+      <%= f.label :title, class: "input-group-text" %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
-  </div>
+
+    <%= f.fields_for :exercises do |exercise_form| %>
+      <%= render 'exercise_fields', f: exercise_form %>
+    <% end %>
+    <%= link_to_add_fields "Add Exercise", f, :exercises %>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-primary mt-3" %>
+    <%= f.submit class: "btn btn-primary mt-3" %>
   </div>
 <% end %>
