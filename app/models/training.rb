@@ -1,7 +1,7 @@
 class Training < ApplicationRecord
   belongs_to :student
 
-  has_many :exercises
+  has_many :exercises, dependent: :destroy
 
   accepts_nested_attributes_for :student
   accepts_nested_attributes_for :exercises, allow_destroy: true
