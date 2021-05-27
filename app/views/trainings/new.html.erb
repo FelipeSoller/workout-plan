@@ -3,5 +3,6 @@
     <div class="card-body">
       <%= render 'form', training: @training %>
     </div>
+    <%= link_to 'Back', student_path(@student.id), class: "btn btn-secondary btn mt-3" %>
   </div>
 </div>
