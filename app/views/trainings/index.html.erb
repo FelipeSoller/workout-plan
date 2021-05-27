@@ -1,25 +1,29 @@
-<div class="card text-dark bg-light mb-3 mx-auto" style="max-width: 40rem;">
-  <h1 class="card-header">Training</h1>
-  <div class="card-body">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col">Nome</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @trainings.each do |training| %>
+<% @trainings.each do |training| %>
+  <div class="card text-dark bg-light mb-3 mx-auto" style="max-width: 40rem;">
+    <h1 class="card-header"><%= training.title %></h1>
+    <div class="card-body">
+      <table class="table">
+        <thead>
           <tr>
-            <td class="align-middle fw-bold"><%= link_to training.title, training, style: "text-decoration: none !important;" %></td>
-            <td class="d-flex justify-content-end">
-              <%= link_to 'Edit', edit_training_path(training), class: "btn btn-primary btn-sm" %>
-              <%= link_to 'Destroy', training, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ms-3" %>
-            </td>
+            <th class="col">Nome</th>
+            <th class="col">Sets</th>
+            <th class="col">Reps</th>
+            <th class="col">Rest</th>
+            <th class="col">Muscle group</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= link_to 'New Training', new_training_path, class: "btn btn-success" %>
+        </thead>
+        <tbody>
+          <% training.exercises.each do |exercise| %>
+            <tr>
+              <td class="align-middle"><%= exercise.name %></td>
+              <td class="align-middle"><%= exercise.sets %></td>
+              <td class="align-middle"><%= exercise.reps %></td>
+              <td class="align-middle"><%= exercise.rest %></td>
+              <td class="align-middle"><%= exercise.muscle_group %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>
