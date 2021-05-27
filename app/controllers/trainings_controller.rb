@@ -76,7 +76,7 @@ class TrainingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training_params
-      params.require(:training).permit(:title, student_attributes: [:name], exercises_attributes: [:name, :sets, :reps, :rest, :muscle_group, :training_id, :_destroy])
+      params.require(:training).permit(:title, student_attributes: [:name], exercises_attributes: [:name, :sets, :reps, :rest, :muscle_group, :training_id, :id, :_destroy])
     end
 end
 
