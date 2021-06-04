@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe Training, type: :model do
-  subject {
-    described_class.new(
-      title: 'Training'
-    )
-  }
-
   context 'attributes' do
     it 'is not valid without title' do
       subject.title = nil

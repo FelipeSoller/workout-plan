@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe Teacher, type: :model do
-  subject {
-    described_class.new(
-      name: 'Teacher'
-    )
-  }
-
   context 'attributes' do
     it 'is not valid without name' do
       subject.name = nil

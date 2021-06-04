@@ -1,17 +1,6 @@
 require 'rails_helper'
 
 describe Exercise, type: :model do
-  subject {
-    described_class.new(
-      name: 'Supino',
-      sets: 3,
-      reps: 12,
-      rest: 60,
-      muscle_group: 'peitoral',
-      training_id: 1
-    )
-  }
-
   context 'attributes' do
     it 'is not valid without name' do
       subject.name = nil

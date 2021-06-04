@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  subject {
-    described_class.new(
-      email: 'email@email.com'
-    )
-  }
-
   context 'attributes' do
     it 'is not valid without email' do
       subject.email = nil
@@ -32,20 +26,56 @@ describe User, type: :model do
       end
     end
 
-    context '#teacher?' do
-      it 'profile should be teacher' do
-        expect(subject.teacher?).to be false
+    describe '#teacher?' do
+      context "when profile is different to teacher" do
+        before { subject.profile = "student" }
+        it 'returns false' do
+          expect(subject.teacher?).to be false
+        end
+      end
+
+      context "when profile is equal to teacher" do
+        before { subject.profile = "teacher" }
+        it 'returns true' do
+          expect(subject.teacher?).to be true
+        end
       end
     end
 
-    context '#student?' do
-      it 'profile should be student' do
-        expect(subject.student?).to be false
+    describe '#student?' do
+      context "when profile is different to student" do
+        before { subject.profile = "teacher" }
+        it 'returns false' do
+          expect(subject.student?).to be false
+        end
+      end
+
+      context "when profile is equal to student" do
+        before { subject.profile = "student" }
+        it 'returns true' do
+          expect(subject.student?).to be true
+        end
       end
     end
 
-      xit '#ensure_that_no_student_and_teacher_at_the_same_time' do
-        expect(subject.teacher? && student).to be false
+    describe "validation" do
+      context "when profile is teacher" do
+        before { subject.profile = "teacher" }
+        it "validates absent of student_id" do
+          subject.student = Student.new
+          subject.valid?
+          expect(subject.errors[:student_id]).to include("must be blank")
+        end
       end
+
+      context "when profile is student" do
+        before { subject.profile = "student" }
+        it "validates absent of teacher_id" do
+          subject.teacher = Teacher.new
+          subject.valid?
+          expect(subject.errors[:teacher_id]).to include("must be blank")
+        end
+      end
+    end
   end
 end
