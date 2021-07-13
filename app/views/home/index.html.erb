@@ -1,18 +1,9 @@
-<div class="container mt-5">
-  <% if user_signed_in? %>
-    <h1>Bem Vindo</h1>
+<div class="container mt-5">  
+  <% if user_signed_in? && @user_profile === "teacher" %>
+    <h1 class="row justify-content-center">Bem Vindo ao WorkoutPlan, </h1>
+  <% elsif user_signed_in? && @user_profile === "student" %>
+    <%= render 'student_card' %>
   <% else %>
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <%= link_to "Sign Up", new_teacher_path, class: "btn btn-primary mt-2", style: "width: 200px" %>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <%= link_to "Sing In", new_user_session_path, class: "btn btn-success mt-2", style: "width: 200px" %>
-      </div>
-    </div>
+    <%= render 'landing' %>    
   <% end %>
-
 </div>

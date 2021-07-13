@@ -4,26 +4,30 @@ class TeachersController < ApplicationController
 
   # GET /teachers or /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.all 
+    authorize @teachers
   end
 
   # GET /teachers/1 or /teachers/1.json
-  def show
+  def show   
+    authorize @teacher 
   end
 
   # GET /teachers/new
   def new
     @teacher = Teacher.new
     @teacher.build_user
+    authorize @teacher
   end
 
   # GET /teachers/1/edit
   def edit
+    authorize @teacher
   end
 
   # POST /teachers or /teachers.json
   def create
-    @teacher = Teacher.new(teacher_params)
+    @teacher = Teacher.new(teacher_params)   
 
     respond_to do |format|
       if @teacher.save
@@ -52,6 +56,8 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1 or /teachers/1.json
   def destroy
     @teacher.destroy
+    authorize @teachers
+
     respond_to do |format|
       format.html { redirect_to teachers_url, notice: "Teacher was successfully destroyed." }
       format.json { head :no_content }
@@ -62,7 +68,7 @@ class TeachersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_teacher
       @teacher = Teacher.find(params[:id])
-    end
+    end  
 
     # Only allow a list of trusted parameters through.
     def teacher_params

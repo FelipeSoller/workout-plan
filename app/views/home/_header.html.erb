@@ -6,8 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <% if user_signed_in? %>
-
+          <% if user_signed_in? && @user_profile === "teacher" %>
             <li class="nav-item">
               <%= link_to "Students", students_path, class: "nav-link" %>
             </li>
@@ -19,8 +18,15 @@
             <li class="nav-item">
               <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
-          <% end %>
+          <% elsif user_signed_in? && @user_profile === "student" %>
+            <li class="nav-item">
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+            </li>
 
+            <li class="nav-item">
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li> 
+          <% end %>
       </ul>
     </div>
   </div>

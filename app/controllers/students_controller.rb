@@ -17,7 +17,6 @@ class StudentsController < ApplicationController
     @student = Student.new
     @student.build_user
   end
-
   # GET /students/1/edit
   def edit
   end

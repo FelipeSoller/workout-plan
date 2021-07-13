@@ -1,0 +1,32 @@
+<div >
+  <h1 class="row justify-content-center">Bem Vindo ao WorkoutPlan</h1>
+  <p class="row justify-content-center">Faça seu Login ou Crie sua conta.</p>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <%= image_tag('teacher.jpeg', class:"card-img-top img-fluid", height: '320px') %>
+        <div class="card-body">
+          <h5 class="card-title">Teachers</h5>
+          <p class="card-text">Faça seu login ou crie sua conta!</p>
+          <div class="d-flex justify-content-between">
+            <%= link_to "Sign In", new_user_session_path, class: "btn btn-success me-3", style: "width: 100%", id: "teacher-sign-in" %>
+            <%= link_to "Sign Up", new_teacher_path, class: "btn btn-primary ms-3", style: "width: 100%" %>
+          </div>                      
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <%= image_tag('student.jpeg', class:"card-img-top img-fluid", height: '320px') %>
+        <div class="card-body">
+          <h5 class="card-title">Students</h5>
+          <p class="card-text">Caso não tenha sua conta, solicite acesso ao seu professor.</p>
+          <%= link_to "Sign In", new_user_session_path, class: "btn btn-success", style: "width: 100%", id: "student-sign-in" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

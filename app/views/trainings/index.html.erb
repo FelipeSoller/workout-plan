@@ -27,6 +27,14 @@
     </div>
   </div>
 <% end %>
-<div class="d-grid gap-2 m-auto" style="max-width: 40rem;">
-  <%= link_to 'Back', student_path(@student.id), class: "btn btn-secondary btn mt-3" %>
-</div>
+
+<% if @user_profile === 'student' %>
+  <div class="d-grid gap-2 m-auto" style="max-width: 40rem;">
+    <%= link_to 'Back', root_path, class: "btn btn-secondary btn mt-3" %>
+  </div>
+<% else %>
+  <div class="d-grid gap-2 m-auto" style="max-width: 40rem;">
+    <%= link_to 'Back', student_path(@student.id), class: "btn btn-secondary btn mt-3" %>
+  </div>
+<% end %>
+

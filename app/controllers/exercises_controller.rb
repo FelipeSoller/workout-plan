@@ -5,27 +5,29 @@ class ExercisesController < ApplicationController
   # GET /exercises or /exercises.json
   def index
     @exercises = Exercise.all
+    authorize @exercises 
   end
 
   # GET /exercises/1 or /exercises/1.json
   def show
+    authorize @exercise
   end
 
   # GET /exercises/new
   def new
     @exercise = Exercise.new
     @exercise.build_training
+    authorize @exercise
   end
 
   # GET /exercises/1/edit
   def edit
+    authorize @exercise
   end
 
   # POST /exercises or /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
-    # VERIFICAR SE ESTA CORRETO
-    # @exercise.training = Training.find_by(params[:title])
     @exercise.training_id = params[:training_id]
 
     respond_to do |format|
@@ -55,6 +57,7 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1 or /exercises/1.json
   def destroy
     @exercise.destroy
+    authorize @exercise
     respond_to do |format|
       format.html { redirect_to @exercise, notice: "Exercise was successfully destroyed." }
       format.json { head :no_content }

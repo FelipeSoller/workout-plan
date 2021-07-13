@@ -3,28 +3,28 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="col">Nome</th>
-        <th class="col">Sets</th>
-        <th class="col">Reps</th>
-        <th class="col">Rest</th>
-        <th class="col">Muscle group</th>
+        <th class="col"><%= f.label :name %></th>
+        <th class="col"><%= f.label :sets %></th>
+        <th class="col"><%= f.label :reps %></th>
+        <th class="col"><%= f.label :rest %></th>
+        <th class="col"><%= f.label :muscle_group %></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="align-middle">
+        <td class="align-middle">          
           <%= f.text_field :name, class: "form-control" %>
         </td>
-        <td class="align-middle">
+        <td class="align-middle">          
           <%= f.text_field :sets, class: "form-control", style: "width: 50px;" %>
         </td>
-        <td class="align-middle">
+        <td class="align-middle">          
           <%= f.text_field :reps, class: "form-control", style: "width: 50px;" %>
         </td>
-        <td class="align-middle">
+        <td class="align-middle">          
           <%= f.text_field :rest, class: "form-control", style: "width: 50px;" %>
         </td>
-        <td class="align-middle">
+        <td class="align-middle">          
           <%= f.select :muscle_group,
               options_for_select([
                 ['Abdominal', 'Abdominal'],

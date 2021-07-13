@@ -4,23 +4,28 @@ class TrainingsController < ApplicationController
 
   # GET /trainings or /trainings.json
   def index
-    @trainings = student.trainings
+    @trainings = student.trainings    
+    @user_profile = current_user.profile
+    # authorize @trainings    
   end
 
   # GET /trainings/1 or /trainings/1.json
   def show
     training
+    authorize @training 
   end
 
   # GET /trainings/new
   def new
     training.build_student
     training.exercises.build
+    authorize @training
   end
 
   # GET /trainings/1/edit
   def edit
     training
+    authorize @training  
   end
 
   # POST /trainings or /trainings.json
@@ -54,6 +59,8 @@ class TrainingsController < ApplicationController
   # DELETE /trainings/1 or /trainings/1.json
   def destroy
     training.destroy
+    authorize @training 
+
     respond_to do |format|
       format.html { redirect_to student_url(training.student_id), notice: "Training was successfully destroyed." }
       format.json { head :no_content }
@@ -70,8 +77,12 @@ class TrainingsController < ApplicationController
       @training ||= student.trainings.find(params[:id])
     end
 
+    def trainings
+      @trainings ||= policy_scope(params[:student_id], policy_class: TrainingPolicy) 
+    end
+
     def student
-      @student ||= Student.find(params[:student_id])
+      @student ||= policy(Training).student(params[:student_id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,0 +1,14 @@
+<h1 class="row justify-content-center">Bem Vindo ao WorkoutPlan</h1>
+<div class="card text-center bg-light mt-5 mx-auto" style="max-width: 40rem;">
+    <div class="card-header">
+    Treino elaborado por <%= @teacher.name %>
+    </div>
+    <div class="card-body">
+    <h5 class="card-title"><%= @user.name %></h5>
+    <p class="card-text">Este treino foi elaborado com base nos seus objetivos. Para acessar seu treino, clique no botão abaixo</p>
+    <%= link_to 'See Training', trainings_path, class: "btn btn-success btn-sm me-3" %>
+    </div>
+    <div class="card-footer text-muted">
+    Atualizado em <%= @user.updated_at.strftime("%d/%m/%Y") %> 
+    </div>
+</div>
